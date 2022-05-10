@@ -1,26 +1,24 @@
-Pixel[][] processScreen(){
-  Pixel[][] data = new Pixel[width][];
+ArrayList<Pixel> processScreen(){
+  ArrayList<Pixel> data = new ArrayList<Pixel>();
   for (int i = 0; i<width; i++) {
-    data[i] = new Pixel[height];
     for (int j = 0; j<height; j++) {
-      data[i][j] = new Pixel(i, j, color(get(i, j)));
+      data.add(new Pixel(i, j, color(get(i, j))));
     }
   }
   return data;
 }
 
-Pixel[][] processScreen(PGraphics imageSpace){
-  Pixel[][] data = new Pixel[width][];
+ArrayList<Pixel> processScreen(PGraphics graphics){
+  ArrayList<Pixel> data = new ArrayList<Pixel>();
   for (int i = 0; i<width; i++) {
-    data[i] = new Pixel[height];
     for (int j = 0; j<height; j++) {
-      data[i][j] = new Pixel(i, j, color(imageSpace.get(i, j)));
+      data.add(new Pixel(i, j, color(graphics.get(i, j))));
     }
   }
   return data;
 }
 
-Pixel[][] processImage(String imageName) {
+ArrayList<Pixel> processImage(String imageName) {
   PGraphics imageSpace = createGraphics(width, height);
   imageSpace.beginDraw();
   imageSpace.image(loadImage(imageName), 0, 0);
