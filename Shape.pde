@@ -1,5 +1,7 @@
 class Shape {
   PGraphics shape;
+  float x;
+  float y;
 
   Shape (ArrayList<Pixel> pixels_) {
     shape = createGraphics(width, height);
@@ -13,14 +15,11 @@ class Shape {
   }
   
   void display(){
-    image(shape, 0, 0);
+    image(shape, x, y);
   }
   
-  void move(float x, float y){
-    PGraphics oldShape = shape;
-    shape = createGraphics(width, height);
-    shape.beginDraw();
-    shape.image(oldShape, x, y);
-    shape.endDraw();
+  void move(float dx, float dy){
+    x += dx;
+    y += dy;
   }
 }

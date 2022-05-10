@@ -1,5 +1,6 @@
-String imageName = "ImageTwo.jpeg";
-Pixel[][] data;
+String imageName = "GreenII.jpeg";
+ArrayList<Pixel> data;
+Shape img;
 Shape shape1;
 //Shape shape2;
 void setup() {
@@ -7,16 +8,17 @@ void setup() {
   data = processImage(imageName);
   ArrayList<Pixel> newData = new ArrayList<Pixel>();
   ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
-  for (int i = 0; i<data.length; i++) {
-    for (int j = 0; j<data[0].length; j++) {
-      if (blue(data[i][j].c) <= 50) {
-        shapeData.add(data[i][j]);
-      } else {
-        newData.add(data[i][j]);
-      }
+  for (int i = 0; i<data.size(); i++) {
+    Pixel pixel = data.get(i);
+    if (blue(pixel.c) <= 50) {
+      shapeData.add(pixel);
+    } else {
+      newData.add(pixel);
     }
   }
+  data = newData;
   shape1 = new Shape(shapeData);
+  img = new Shape(data);
   //ArrayList<Pixel> shapeData2 = new ArrayList<Pixel>();
   //for (int i = 0; i<data.length; i++) {
   //  for (int j = 0; j<data[0].length; j++) {
@@ -31,8 +33,9 @@ void setup() {
   //image(loadImage(imageName), 0, 0);
 }
 void draw() {
-  image(loadImage(imageName), 0, 0);
-  shape1.move(0, -0.0001);
+  background(255);
+  img.display();
+  shape1.move(0, -1);
   shape1.display();
   //shape2.move(1, 0);
   //shape2.display();
