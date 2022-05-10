@@ -1,19 +1,9 @@
 String imageName = "birthdayparty.jpeg";
-PImage img;
-int dim = 400;
-Pixel[][] data = new Pixel[dim][];
+Pixel[][] data;
 
 void setup() {
   size(400, 400);
-  img = loadImage(imageName);
-  image(img, 0, 0);
-  for (int i = 0; i<width; i++) {
-    data[i] = new Pixel[dim];
-    for (int j = 0; j<height; j++) {
-      data[i][j] = new Pixel(i, j, color(get(i, j)));
-    }
-  }
-  background(255,0,0);
+  data = processImage(imageName);
   ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
   for (int i = 0; i<data.length; i++) {
     for (int j = 0; j<data[0].length; j++) {
@@ -27,6 +17,7 @@ void setup() {
   shape1.move(200,200);
   shape1.display();
 }
+
 //int count = 15;
 //void draw() {
 //  background(0);
