@@ -2,8 +2,6 @@ String imageName = "birthdayparty.jpeg";
 PImage img;
 int dim = 400;
 Pixel[][] data = new Pixel[dim][];
-ArrayList<Pixel> shapeData;
-Shape shape1;
 
 void setup() {
   size(400, 400);
@@ -15,6 +13,8 @@ void setup() {
       data[i][j] = new Pixel(i, j, color(get(i, j)));
     }
   }
+  background(255,0,0);
+  ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
   for (int i = 0; i<data.length; i++) {
     for (int j = 0; j<data[0].length; j++) {
       if (blue(data[i][j].c) >= 100){
@@ -22,7 +22,7 @@ void setup() {
       }
     }
   }
-  shape1 = new Shape(shapeData);
+  Shape shape1 = new Shape(shapeData);
   shape1.display();
 }
 //int count = 15;
