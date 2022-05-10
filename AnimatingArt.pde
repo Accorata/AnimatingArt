@@ -24,6 +24,8 @@ void setup() {
   }
   Shape shape1 = new Shape(shapeData);
   shape1.display();
+  shape1.move(200,200);
+  shape1.display();
 }
 //int count = 15;
 //void draw() {

@@ -15,4 +15,12 @@ class Shape {
   void display(){
     image(shape, 0, 0);
   }
+  
+  void move(float x, float y){
+    PGraphics oldShape = shape;
+    shape = createGraphics(width, height);
+    shape.beginDraw();
+    shape.image(oldShape, x, y);
+    shape.endDraw();
+  }
 }
