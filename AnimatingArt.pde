@@ -1,37 +1,43 @@
 String imageName = "GreenII.jpeg";
-ArrayList<Pixel> data;
+Image imgData;
 Shape img;
 Shape shape1;
-//Shape shape2;
+Shape shape2;
 void setup() {
   size(400, 400);
-  data = processImage(imageName);
+  imgData = new Image(processImage(imageName));
+  shape1 = genShape(imgData, 50);
+  //ArrayList<Pixel> newData2 = new ArrayList<Pixel>();
+  //ArrayList<Pixel> shapeData2 = new ArrayList<Pixel>();
+  //for (int i = 0; i<data.size(); i++) {
+  //  Pixel pixel = data.get(i);
+  //  if (red(pixel.c) >= 100) {
+  //    shapeData2.add(pixel);
+  //  } else {
+  //    newData2.add(pixel);
+  //  }
+  //}
+  //data = newData2;
+  //shape2 = new Shape(shapeData2);
+  img = new Shape(imgData.data);
+}
+
+Shape genShape (Image imgData, float blueCap) {
+  ArrayList<Pixel> data = imgData.data;
   ArrayList<Pixel> newData = new ArrayList<Pixel>();
   ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
   for (int i = 0; i<data.size(); i++) {
     Pixel pixel = data.get(i);
-    if (blue(pixel.c) <= 50) {
+    if (blue(pixel.c) <= blueCap) {
       shapeData.add(pixel);
     } else {
       newData.add(pixel);
     }
   }
-  data = newData;
-  shape1 = new Shape(shapeData);
-  img = new Shape(data);
-  //ArrayList<Pixel> shapeData2 = new ArrayList<Pixel>();
-  //for (int i = 0; i<data.length; i++) {
-  //  for (int j = 0; j<data[0].length; j++) {
-  //    if (red(data[i][j].c) <= 200) {
-  //      shapeData2.add(data[i][j]);
-  //    }
-  //  }
-  //}
-  //shape2 = new Shape(shapeData2);
-  //shape1.move(200,200);
-  //shape1.display();
-  //image(loadImage(imageName), 0, 0);
+  imgData.set(newData);
+  return new Shape(shapeData);
 }
+
 void draw() {
   background(255);
   img.display();
