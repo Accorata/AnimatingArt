@@ -1,15 +1,15 @@
 class Requirement {
-  String req;
-  boolean greater;
   String type;
+  boolean greater;
+  String req;
 
-  Requirement (String req_, boolean greater_, String type_){
-    req = req_.toLowerCase();
-    greater = greater_;
+  Requirement (String type_, boolean greater_, String req_){
     type = type_.toLowerCase();
+    greater = greater_;
+    req = req_.toLowerCase();
   }
 
-  boolean ifSatisfy(color c) {
+  boolean isSatisfied(color c) {
     float numReq = 0;
     if (float(req) >= 0) {
       numReq = float(req);

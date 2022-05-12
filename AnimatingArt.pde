@@ -1,12 +1,14 @@
 String imageName = "GreenII.jpeg";
 Image imgData;
 Shape img;
+Requirement req1;
 Shape shape1;
 Shape shape2;
 void setup() {
   size(400, 400);
   imgData = new Image(processImage(imageName));
-  shape1 = genShape(imgData, 50);
+  req1 = new Requirement("blue", false, "50");
+  shape1 = genShape(imgData, req1);
   //ArrayList<Pixel> newData2 = new ArrayList<Pixel>();
   //ArrayList<Pixel> shapeData2 = new ArrayList<Pixel>();
   //for (int i = 0; i<data.size(); i++) {
@@ -22,13 +24,13 @@ void setup() {
   img = new Shape(imgData.data);
 }
 
-Shape genShape (Image imgData, float blueCap) {
+Shape genShape (Image imgData, Requirement req) {
   ArrayList<Pixel> data = imgData.data;
   ArrayList<Pixel> newData = new ArrayList<Pixel>();
   ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
   for (int i = 0; i<data.size(); i++) {
     Pixel pixel = data.get(i);
-    if (blue(pixel.c) <= blueCap) {
+    if (req.isSatisfied(pixel.c)) {
       shapeData.add(pixel);
     } else {
       newData.add(pixel);
