@@ -21,7 +21,7 @@ ArrayList<Pixel> processScreen(PGraphics graphics){
 ArrayList<Pixel> processImage(String imageName) {
   PGraphics imageSpace = createGraphics(width, height);
   imageSpace.beginDraw();
-  imageSpace.image(loadImage(imageName), 0, 0);
+  imageSpace.image(loadImage(imageName), 0, 0, width, height);
   imageSpace.endDraw();
   return processScreen(imageSpace);
 }
