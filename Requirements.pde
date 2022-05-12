@@ -1,40 +1,51 @@
-class Requirements {
-  ArrayList<Float> reqs = new ArrayList<Float>();
-  ArrayList<Boolean> greaters = new ArrayList<Boolean>();
-  ArrayList<String> types = new ArrayList<String>();
-  
-  //Constructor
-  
-  boolean ifSatisfy(color c){
-    float r = red(c);
-    float g = green(c);
-    float b = blue(c);
-    for (int i = 0; i<reqs.size(); i++){
-      Float req = reqs.get(i);
-      Boolean greater = greaters.get(i);
-      String type = types.get(i).toLowerCase();
-      if (type.equals("red")) {
-        if (greater) {
-          if (r < req) return false;
-        } else {
-          if (r > req) return false;
-        }
-      } else if (type.equals("green")) {
-        if (greater) {
-          if (g < req) return false;
-        } else {
-          if (g > req) return false;
-        }
-      } else if (type.equals("blue")){
-        if (greater) {
-          if (b < req) return false;
-        } else {
-          if (b > req) return false;
-        }
+class Requirement {
+  String req;
+  boolean greater;
+  String type;
+
+  Requirement (String req_, boolean greater_, String type_){
+    req = req_.toLowerCase();
+    greater = greater_;
+    type = type_.toLowerCase();
+  }
+
+  boolean ifSatisfy(color c) {
+    float numReq = 0;
+    if (float(req) >= 0) {
+      numReq = float(req);
+    } else if (req.equals("red")) {
+      numReq = red(c);
+    } else if (req.equals("green")) {
+      numReq = green(c);
+    } else if (req.equals("blue")) {
+      numReq = blue(c);
+    } else {
+      println("Error called from Requirement class: req not formatted correctly");
+    }
+    if (type.equals("red")) {
+      float r = red(c);
+      if (greater) {
+        if (r < numReq) return false;
       } else {
-        println("Error");
-        return false;
+        if (r > numReq) return false;
       }
+    } else if (type.equals("green")) {
+      float g = green(c);
+      if (greater) {
+        if (g < numReq) return false;
+      } else {
+        if (g > numReq) return false;
+      }
+    } else if (type.equals("blue")) {
+      float b = blue(c);
+      if (greater) {
+        if (b < numReq) return false;
+      } else {
+        if (b > numReq) return false;
+      }
+    } else {
+      println("Error called from Requirement class: type not formatted correctly");
+      return false;
     }
     return true;
   }
