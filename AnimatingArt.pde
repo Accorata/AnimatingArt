@@ -7,7 +7,8 @@ Shape shape2;
 void setup() {
   size(400, 400);
   imgData = new Image(processImage(imageName));
-  req1 = new Requirement("blue", false, "50");
+  //req1 = new Requirement("blue", false, "50");
+  req1 = new Requirement("Blue is less than 50");
   shape1 = genShape(imgData, req1);
   //ArrayList<Pixel> newData2 = new ArrayList<Pixel>();
   //ArrayList<Pixel> shapeData2 = new ArrayList<Pixel>();
@@ -22,22 +23,6 @@ void setup() {
   //data = newData2;
   //shape2 = new Shape(shapeData2);
   img = new Shape(imgData.data);
-}
-
-Shape genShape (Image imgData, Requirement req) {
-  ArrayList<Pixel> data = imgData.data;
-  ArrayList<Pixel> newData = new ArrayList<Pixel>();
-  ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
-  for (int i = 0; i<data.size(); i++) {
-    Pixel pixel = data.get(i);
-    if (req.isSatisfied(pixel.c)) {
-      shapeData.add(pixel);
-    } else {
-      newData.add(pixel);
-    }
-  }
-  imgData.set(newData);
-  return new Shape(shapeData);
 }
 
 void draw() {

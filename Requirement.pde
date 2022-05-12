@@ -8,6 +8,19 @@ class Requirement {
     greater = greater_;
     req = req_.toLowerCase();
   }
+  Requirement (String input) {
+    String[] splitInput = split(input.toLowerCase(), ' ');
+    if (splitInput.length != 5) println("Error called from Requirement class:\nconstructor string not formatted correctly -\nwrong number of words (should be 5)");
+    type = splitInput[0];
+    if (splitInput[2].equals("greater")) {
+      greater = true;
+    } else if (splitInput[2].equals("less")) {
+      greater = false;
+    } else {
+      println("Error called from Requirement class:\nconstructor string not formatted correctly -\nthird word not 'greater' or 'less'");
+    }
+    req = splitInput[4];
+  }
 
   boolean isSatisfied(color c) {
     float numReq = 0;
@@ -20,7 +33,7 @@ class Requirement {
     } else if (req.equals("blue")) {
       numReq = blue(c);
     } else {
-      println("Error called from Requirement class: req not formatted correctly");
+      println("Error called from Requirement class:\nreq not formatted correctly");
     }
     if (type.equals("red")) {
       float r = red(c);
@@ -44,7 +57,7 @@ class Requirement {
         if (b > numReq) return false;
       }
     } else {
-      println("Error called from Requirement class: type not formatted correctly");
+      println("Error called from Requirement class:\ntype not formatted correctly");
       return false;
     }
     return true;
