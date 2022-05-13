@@ -22,7 +22,7 @@ void draw() {
   background(255);
   img.display();
   shape1.distort(1.01);
-  shape1.move(0, -1);
+  shape1.move(-1, -1);
   shape1.display();
   //shape2.move(1, 0);
   //shape2.display();
