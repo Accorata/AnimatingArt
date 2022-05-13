@@ -2,6 +2,7 @@ class Shape {
   PGraphics shape;
   float x;
   float y;
+  float scale = 1;
 
   Shape (ArrayList<Pixel> pixels_) {
     shape = createGraphics(width, height);
@@ -15,12 +16,16 @@ class Shape {
   }
 
   void display() {
-    image(shape, x, y);
+    image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
   }
 
   void move(float dx, float dy) {
     x += dx;
     y += dy;
+  }
+  
+  void distort(float scale_){
+    scale *= scale_;
   }
 }
 
