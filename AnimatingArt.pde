@@ -1,28 +1,22 @@
-String imageName = "Collage2.jpeg";
-String image2Name = "GreenI.jpeg";
-Image imgData;
-Shape img;
+ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Requirement> reqs = new ArrayList<Requirement>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
+Image img;
 
 void setup() {
+  imageNames.add("Collage2.jpeg");
+  imageNames.add("GreenI.jpeg");
   size(300, 410);
-  imgData = new Image(processImage(imageName));
-  //reqs.add(new Requirement("Blue is less than 120"));
-  //reqs.add(new Requirement("Red is less than 70"));
-  //reqs.add(new Requirement("Green is less than 70"));
-  Pixel toGet = imgData.get(144, 66);
+  img = new Image(processImage(imageNames.get(0)));
+  Pixel toGet = img.get(144, 66);
   if (toGet != null) {
     reqs = genReqs(toGet.c, 40);
   }
   reqs.add(new Requirement("y is less than 100"));
-  shapes.add(imgData.genShape(reqs));
+  shapes.add(img.genShape(reqs));
   reqs.clear();
-  //reqs.remove(0);
-  //reqs.add(new Requirement("Green is greater than 150"));
-  //reqs.add(new Requirement("Red is less than 150"));
-  imgData.addLowerImage(image2Name);
-  img = new Shape(imgData.data);
+  img.addLowerImage(imageNames.get(1));
+  img.save();
 }
 
 void draw() {

@@ -3,7 +3,10 @@ class Shape {
   float x;
   float y;
   float scale = 1;
-
+  
+  Shape () {
+  }
+  
   Shape (ArrayList<Pixel> pixels_) {
     shape = createGraphics(width, height);
     shape.beginDraw();

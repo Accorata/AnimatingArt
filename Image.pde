@@ -1,10 +1,27 @@
-class Image {
+class Image extends Shape {
   ArrayList<Pixel> data;
 
   Image (ArrayList<Pixel> data_) {
+    super();
     data = data_;
   }
-
+  
+  @Override
+  void display () {
+    image(shape, 0, 0, width, height);
+  }
+  
+  void save () {
+    shape = createGraphics(width, height);
+    shape.beginDraw();
+    for (int i = 0; i<data.size(); i++) {
+      Pixel pixel = data.get(i);
+      shape.stroke(pixel.c);
+      shape.point(pixel.x, pixel.y);
+    }
+    shape.endDraw();
+  }
+  
   Shape genShape (ArrayList<Requirement> reqs) {
     ArrayList<Pixel> newData = new ArrayList<Pixel>();
     ArrayList<Pixel> shapeData = new ArrayList<Pixel>();
