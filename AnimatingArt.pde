@@ -19,12 +19,13 @@ void setup() {
   //reqs.add(new Requirement("Green is greater than 150"));
   //reqs.add(new Requirement("Red is less than 150"));
   //shape2 = genShape(imgData, reqs);
+  imgData.addLowerImage(image2Name);
   img = new Shape(imgData.data);
 }
 
 void draw() {
   background(255);
-  image(loadImage("Images/"+image2Name), 0, 0, width, height);
+  //image(loadImage("Images/"+image2Name), 0, 0, width, height);
   img.display();
   shape1.distort(1.01);
   shape1.move(0, -3);
