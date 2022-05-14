@@ -4,6 +4,7 @@ Image imgData;
 Shape img;
 ArrayList<Requirement> reqs = new ArrayList<Requirement>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
+
 void setup() {
   size(300, 410);
   imgData = new Image(processImage(imageName));
@@ -30,6 +31,7 @@ void draw() {
     shapes.get(i).display();
   }
 }
+
 void mouseClicked(){
   println("Location: (" + mouseX + ", " + mouseY + ")");
   color c = get(mouseX, mouseY);
