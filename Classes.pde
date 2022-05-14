@@ -59,7 +59,7 @@ class Requirement {
   boolean isSatisfied(Pixel pixel) {
     color c = pixel.c;
     float numReq = 0;
-    if (float(req) >= 0) {
+    if (!Float.isNaN(float(req))) {
       numReq = float(req);
     } else if (req.equals("red")) {
       numReq = red(c);

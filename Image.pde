@@ -1,5 +1,5 @@
 class Image {
-  public ArrayList<Pixel> data;
+  ArrayList<Pixel> data;
 
   Image (ArrayList<Pixel> data_) {
     data = data_;
@@ -37,5 +37,15 @@ class Image {
     }
     imageSpace.endDraw();
     data = processScreen(imageSpace);
+  }
+  
+  Pixel get(int x, int y) {
+    for (int i = 0; i<data.size(); i++){
+      Pixel pixel = data.get(i);
+      if ((int)pixel.x == x && (int)pixel.y == y){
+        return pixel;
+      }
+    }
+    return null;
   }
 }
