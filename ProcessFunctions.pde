@@ -27,7 +27,7 @@ ArrayList<Pixel> processImage(String imageName) {
 }
 
 ArrayList<Requirement> genReqs(color c) {
-  return genReqs(c, 10);
+  return genReqs(c, 20);
 }
 
 ArrayList<Requirement> genReqs(color c, float flex) {

@@ -8,18 +8,16 @@ ArrayList<Shape> shapes = new ArrayList<Shape>();
 void setup() {
   size(300, 410);
   imgData = new Image(processImage(imageName));
-  reqs.add(new Requirement("Blue is less than 120"));
-  reqs.add(new Requirement("Red is less than 70"));
-  reqs.add(new Requirement("Green is less than 70"));
+  //reqs.add(new Requirement("Blue is less than 120"));
+  //reqs.add(new Requirement("Red is less than 70"));
+  //reqs.add(new Requirement("Green is less than 70"));
   Pixel toGet = imgData.get(144, 66);
   if (toGet != null) {
     reqs = genReqs(toGet.c, 40);
   }
   reqs.add(new Requirement("y is less than 100"));
-  //reqs.add(new Requirement("Blue is greater than 30"));
-  //reqs.add(new Requirement("Blue is less than red"));
   shapes.add(imgData.genShape(reqs));
-  reqs.remove(0);
+  reqs.clear();
   //reqs.remove(0);
   //reqs.add(new Requirement("Green is greater than 150"));
   //reqs.add(new Requirement("Red is less than 150"));
