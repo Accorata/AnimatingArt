@@ -13,7 +13,7 @@ void setup() {
   reqs.add(new Requirement("y is less than 100"));
   //reqs.add(new Requirement("Blue is greater than 30"));
   //reqs.add(new Requirement("Blue is less than red"));
-  shapes.add(genShape(imgData, reqs));
+  shapes.add(imgData.genShape(reqs));
   reqs.remove(0);
   //reqs.remove(0);
   //reqs.add(new Requirement("Green is greater than 150"));
