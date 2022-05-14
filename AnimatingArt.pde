@@ -11,6 +11,7 @@ void setup() {
   reqs.add(new Requirement("Blue is less than 120"));
   reqs.add(new Requirement("Red is less than 70"));
   reqs.add(new Requirement("Green is less than 70"));
+  reqs.add(new Requirement("y is less than 100"));
   //reqs.add(new Requirement("Blue is greater than 30"));
   //reqs.add(new Requirement("Blue is less than red"));
   shape1 = genShape(imgData, reqs);

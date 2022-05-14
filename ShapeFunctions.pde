@@ -6,7 +6,7 @@ Shape genShape (Image imgData, ArrayList<Requirement> reqs) {
     Pixel pixel = data.get(i);
     boolean satisfiesReqs = true;
     for (Requirement req : reqs) {
-      if (!req.isSatisfied(pixel.c)) {
+      if (!req.isSatisfied(pixel)) {
         satisfiesReqs = false;
       }
     }

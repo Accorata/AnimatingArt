@@ -53,7 +53,8 @@ class Requirement {
     req = splitInput[4];
   }
 
-  boolean isSatisfied(color c) {
+  boolean isSatisfied(Pixel pixel) {
+    color c = pixel.c;
     float numReq = 0;
     if (float(req) >= 0) {
       numReq = float(req);
@@ -86,6 +87,18 @@ class Requirement {
         if (b < numReq) return false;
       } else {
         if (b > numReq) return false;
+      }
+    } else if (type.equals("x")) {
+      if (greater) {
+        if (pixel.x < numReq) return false;
+      } else {
+        if (pixel.x > numReq) return false;
+      }
+    } else if (type.equals("y")) {
+      if (greater) {
+        if (pixel.y < numReq) return false;
+      } else {
+        if (pixel.y > numReq) return false;
       }
     } else {
       println("Error called from Requirement class:\ntype not formatted correctly");
