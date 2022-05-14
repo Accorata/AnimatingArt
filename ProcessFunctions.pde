@@ -43,3 +43,23 @@ ArrayList<Requirement> genReqs(color c, float flex) {
   reqs.add(new Requirement("blue", false, ""+(b+flex))); 
   return reqs;
 }
+
+ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
+  ArrayList<Color> colors = new ArrayList<Color>();
+  for (int i = 0; i<data.size(); i++) {
+    Pixel pixel = data.get(i);
+    boolean toBeAdded = true;
+    int j = 0;
+    while (toBeAdded && j<colors.size()) {
+      Color c = colors.get(j);
+      if (abs(c.r - red(pixel.c)) > flex || abs(c.g - green(pixel.c)) > flex || abs(c.b - blue(pixel.c)) > flex) {
+        toBeAdded = false;
+      }
+      j++;
+    }
+    if (toBeAdded) {
+      colors.add(new Color(pixel.c));
+    }
+  }
+  return colors;
+}

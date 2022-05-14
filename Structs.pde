@@ -9,3 +9,17 @@ class Pixel {
     c = c_;
   }
 }
+
+class Color {
+  public color c;
+  public float r;
+  public float g;
+  public float b;
+  
+  Color (color c_) {
+    c = c_;
+    r = red(c_);
+    g = green(c_);
+    b = blue(c_);
+  }
+}
