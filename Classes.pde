@@ -23,9 +23,12 @@ class Shape {
     x += dx;
     y += dy;
   }
-  
   void distort(float scale_){
     scale *= scale_;
+  }
+  void move(float dx, float dy, float dz) {
+    move(dx, dy);
+    distort(1+dz/100);
   }
 }
 
