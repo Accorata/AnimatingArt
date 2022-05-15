@@ -46,7 +46,7 @@ ArrayList<Requirement> genReqs(color c, float flex) {
 
 ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
   ArrayList<Color> colors = new ArrayList<Color>();
-  HashMap<Color, Boolean> check = new HashMap<>();
+  HashMap<Color, Boolean> check = new HashMap<Color, Boolean>();
   int dim = (int) (255 / flex);
   for (int r = 0; r<dim; r++){
     for (int b = 0; b<dim; b++){
@@ -55,25 +55,26 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
       }
     }
   }
-  //for (int i = 0; i<data.size(); i++) {
-  //  Pixel pixel = data.get(i);
-  //  Color current = new Color(pixel.r*flex/flex, 
-  //  while (toBeAdded && j<colors.size()) {
-  //    Color c = colors.get(j);
-  //    if (abs(c.r - red(pixel.c)) > flex || abs(c.g - green(pixel.c)) > flex || abs(c.b - blue(pixel.c)) > flex) {
-  //      toBeAdded = false;
-  //    }
-  //    j++;
-  //  }
-  //  if (toBeAdded) {
-  //    colors.add(new Color(pixel.c));
-  //  }
-  //}
+  for (int i = 0; i<data.size(); i++) {
+    Pixel pixel = data.get(i);
+    Color c = new Color(round(pixel.c, flex));
+    if (!check.get(c)) {
+      check.put(c, true);
+      colors.add(c);
+    }
+  }
   return colors;
 }
 
 int round (int num, float flex) {
-  return (int)((int)(num * flex) / flex);
+  return (int)((int)(num / flex) * flex);
+}
+
+Color roundCol (color c, float flex) {
+  int r = round((int)red(c), flex);
+  int g = round((int)green(c), flex);
+  int b = round((int)blue(c), flex);
+  return new Color(r, g, b);
 }
 
 ArrayList<Color> badFindColors (ArrayList<Pixel> data, float flex) {
