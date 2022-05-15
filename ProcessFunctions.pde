@@ -53,6 +53,7 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
       for (int g = 0; g<=dim; g++){
         //println(r*flex + " " + b*flex + " " + g*flex);
         check.put(new Color(r*flex, b*flex, g*flex), false);
+        check.put(new Color(r*flex, b*flex, g*flex), true);
       }
     }
   }
