@@ -48,17 +48,21 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
   ArrayList<Color> colors = new ArrayList<Color>();
   HashMap<Color, Boolean> check = new HashMap<Color, Boolean>();
   int dim = (int) (255 / flex);
-  for (int r = 0; r<dim; r++){
-    for (int b = 0; b<dim; b++){
-      for (int g = 0; g<dim; g++){
+  for (int r = 0; r<=dim; r++){
+    for (int b = 0; b<=dim; b++){
+      for (int g = 0; g<=dim; g++){
+        println(r*flex + " " + b*flex + " " + g*flex);
         check.put(new Color(r*flex, b*flex, g*flex), false);
       }
     }
   }
   for (int i = 0; i<data.size(); i++) {
     Pixel pixel = data.get(i);
-    Color c = new Color(round(pixel.c, flex));
-    if (!check.get(c)) {
+    Color c = roundCol(pixel.c, flex);
+    println(red(pixel.c) + " " + green(pixel.c) + " " + blue(pixel.c) + " : " + c.r + " " + c.g + " " + c.b);
+    check.get(new Color(255.0, 255.0, 255.0));
+    check.get(new Color(23456, 32456, 3456));
+    if (check.get(new Color(255.0, 255.0, 255.0))){//roundCol(pixel.c, flex))){//;c)) {
       check.put(c, true);
       colors.add(c);
     }
@@ -75,24 +79,4 @@ Color roundCol (color c, float flex) {
   int g = round((int)green(c), flex);
   int b = round((int)blue(c), flex);
   return new Color(r, g, b);
-}
-
-ArrayList<Color> badFindColors (ArrayList<Pixel> data, float flex) {
-  ArrayList<Color> colors = new ArrayList<Color>();
-  for (int i = 0; i<data.size(); i++) {
-    Pixel pixel = data.get(i);
-    boolean toBeAdded = true;
-    int j = 0;
-    while (toBeAdded && j<colors.size()) {
-      Color c = colors.get(j);
-      if (abs(c.r - red(pixel.c)) > flex || abs(c.g - green(pixel.c)) > flex || abs(c.b - blue(pixel.c)) > flex) {
-        toBeAdded = false;
-      }
-      j++;
-    }
-    if (toBeAdded) {
-      colors.add(new Color(pixel.c));
-    }
-  }
-  return colors;
 }
