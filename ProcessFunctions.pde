@@ -46,14 +46,16 @@ ArrayList<Requirement> genReqs(color c, float flex) {
 
 ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
   ArrayList<Color> colors = new ArrayList<Color>();
+  ArrayList<Color> possColors = new ArrayList<Color>();
   HashMap<Color, Boolean> check = new HashMap<Color, Boolean>();
   int dim = (int) (255 / flex);
   for (int r = 0; r<=dim; r++){
     for (int b = 0; b<=dim; b++){
       for (int g = 0; g<=dim; g++){
         //println(r*flex + " " + b*flex + " " + g*flex);
-        check.put(new Color(r*flex, b*flex, g*flex), false);
-        check.put(new Color(r*flex, b*flex, g*flex), true);
+        Color c = new Color(r*flex, b*flex, g*flex);
+        check.put(c, false);
+        possColors.add(c);
       }
     }
   }
