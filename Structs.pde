@@ -22,4 +22,10 @@ class Color {
     g = green(c_);
     b = blue(c_);
   }
+  Color (float r_, float g_, float b_) { 
+    c = color(r_,g_,b_);
+    r = r_;
+    g = g_;
+    b = b_;
+  }
 }
