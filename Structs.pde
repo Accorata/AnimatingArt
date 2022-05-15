@@ -28,4 +28,9 @@ class Color {
     g = g_;
     b = b_;
   }
+  
+  @Override
+  String toString () {
+    return "(" + r + " " + g + " " + b + ")";
+  }
 }
