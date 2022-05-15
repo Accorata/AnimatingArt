@@ -4,6 +4,8 @@ class Shape {
   float y;
   float scale = 1;
   
+  float randomDX;
+  
   Shape () {
   }
   
@@ -16,12 +18,16 @@ class Shape {
       shape.point(pixel.x, pixel.y);
     }
     shape.endDraw();
+    randomDX = random(6)-3;
   }
 
   void display() {
     image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
   }
 
+  void move() {
+    x += randomDX;
+  }
   void move(float dx, float dy) {
     x += dx;
     y += dy;

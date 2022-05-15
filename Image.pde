@@ -1,5 +1,5 @@
 class Image extends Shape {
-  ArrayList<Pixel> data;
+  public ArrayList<Pixel> data;
 
   Image (ArrayList<Pixel> data_) {
     super();
