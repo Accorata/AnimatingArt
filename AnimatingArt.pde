@@ -3,7 +3,7 @@ ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
 
 void setup() {
-  ArrayList<Requirement> reqs = new ArrayList<Requirement>();
+  //ArrayList<Requirement> reqs = new ArrayList<Requirement>();
   //imageNames.add("Collage2.jpeg");
   //imageNames.add("GreenI.jpeg");
   for (int i = 1; i<=6; i++) {
@@ -15,15 +15,10 @@ void setup() {
   //if (toGet != null) {
   //  reqs = genReqs(toGet.c, 40);
   //}
-  ArrayList<Color> colors = findColors(img.data, 75);
-  for (int i = 0; i<colors.size(); i++){
-    color c = colors.get(i).c;
-    reqs = genReqs(c, 30);
-    shapes.add(img.genShape(reqs));
-  }
+  shapes = genShapes(img, 50);
   //reqs.add(new Requirement("y is less than 100"));
   //shapes.add(img.genShape(reqs));
-  reqs.clear();
+  //reqs.clear();
   //img.addLowerImage(imageNames.get(1));
   img.save();
 }

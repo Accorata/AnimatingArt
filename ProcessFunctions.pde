@@ -1,4 +1,4 @@
-ArrayList<Pixel> processScreen(){
+ArrayList<Pixel> processScreen() {
   ArrayList<Pixel> data = new ArrayList<Pixel>();
   for (int i = 0; i<width; i++) {
     for (int j = 0; j<height; j++) {
@@ -8,7 +8,7 @@ ArrayList<Pixel> processScreen(){
   return data;
 }
 
-ArrayList<Pixel> processScreen(PGraphics graphics){
+ArrayList<Pixel> processScreen(PGraphics graphics) {
   ArrayList<Pixel> data = new ArrayList<Pixel>();
   for (int i = 0; i<width; i++) {
     for (int j = 0; j<height; j++) {
@@ -49,9 +49,9 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
   ArrayList<Color> possColors = new ArrayList<Color>();
   HashMap<Color, Boolean> check = new HashMap<Color, Boolean>();
   int dim = (int) (255 / flex);
-  for (int r = 0; r<=dim; r++){
-    for (int b = 0; b<=dim; b++){
-      for (int g = 0; g<=dim; g++){
+  for (int r = 0; r<=dim; r++) {
+    for (int b = 0; b<=dim; b++) {
+      for (int g = 0; g<=dim; g++) {
         //println(r*flex + " " + b*flex + " " + g*flex);
         Color c = new Color(r*flex, b*flex, g*flex);
         check.put(c, false);
@@ -66,7 +66,7 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
     Color c = possColors.get(((int)(c1.r/flex) + 1) * ((int)(c1.b/flex) + 1) * ((int)(c1.g/flex) + 1) - 1);
     //println(red(pixel.c) + " " + green(pixel.c) + " " + blue(pixel.c) + " : " + c.r + " " + c.g + " " + c.b);
     Boolean doesExist = check.get(c);
-    if (doesExist != null && !doesExist){
+    if (doesExist != null && !doesExist) {
       check.put(c, true);
       colors.add(new Color(pixel.c));
     }
@@ -84,4 +84,16 @@ Color roundCol (color c, float flex) {
   int g = round((int)green(c), flex);
   int b = round((int)blue(c), flex);
   return new Color(r, g, b);
+}
+
+ArrayList<Shape> genShapes (Image img, float flex) {
+  ArrayList<Shape> shapes = new ArrayList<Shape>();
+  ArrayList<Requirement> reqs;
+  ArrayList<Color> colors = findColors(img.data, flex);
+  for (int i = 0; i<colors.size(); i++) {
+    color c = colors.get(i).c;
+    reqs = genReqs(c, flex);
+    shapes.add(img.genShape(reqs));
+  }
+  return shapes;
 }
