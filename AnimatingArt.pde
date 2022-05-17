@@ -10,7 +10,7 @@ void setup() {
   }
   size(500, 350);
   img = new Image(processImage(imageNames.get(index-1)));
-  shapes = genShapes(img, flex);
+  addShapes(shapes, img, flex);
   img.addLowerImage(imageNames.get(index));
   img.save();
 }
@@ -30,7 +30,7 @@ void draw() {
     index++;
     if (index >= 4) index = 0;
     img = new Image(processScreen());
-    shapes = genShapes(img, flex);
+    addShapes(shapes, img, flex);
     img.addLowerImage(imageNames.get(index));
     img.save();
   }

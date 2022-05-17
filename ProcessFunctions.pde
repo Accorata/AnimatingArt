@@ -93,3 +93,13 @@ ArrayList<Shape> genShapes (Image img, float flex) {
   }
   return shapes;
 }
+
+void addShapes (ArrayList<Shape> shapes, Image img, float flex) {
+  ArrayList<Requirement> reqs;
+  ArrayList<Color> colors = findColors(img.data, flex);
+  for (int i = 0; i<colors.size(); i++) {
+    color c = colors.get(i).c;
+    reqs = genReqs(c, flex);
+    shapes.add(img.genShape(reqs));
+  }
+}
