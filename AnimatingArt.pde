@@ -27,10 +27,11 @@ void draw() {
   count++;
   if (count >= 100) {
     count = 0;
+    //img = new Image(processImage(imageNames.get(index)));
+    //addShapes(shapes, img, flex);
     index++;
     if (index >= 4) index = 0;
-    img = new Image(processScreen());
-    addShapes(shapes, img, flex);
+    shapes = genShapes(img, flex);
     img.addLowerImage(imageNames.get(index));
     img.save();
   }
