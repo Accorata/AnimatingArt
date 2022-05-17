@@ -5,6 +5,8 @@ class Shape {
   float scale = 1;
   
   float randomDX;
+  float randomDY;
+  float randomDZ;
   
   Shape () {
   }
@@ -19,6 +21,8 @@ class Shape {
     }
     shape.endDraw();
     randomDX = random(6)-3;
+    randomDY = random(6)-3;
+    randomDZ = random(6)-3;
   }
 
   void display() {
@@ -26,7 +30,7 @@ class Shape {
   }
 
   void move() {
-    x += randomDX;
+    move(randomDX, randomDY, randomDZ);
   }
   void move(float dx, float dy) {
     x += dx;

@@ -1,28 +1,21 @@
 ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
+int index = 1;
+float flex = 75;
 
 void setup() {
-  //ArrayList<Requirement> reqs = new ArrayList<Requirement>();
-  //imageNames.add("Collage2.jpeg");
-  //imageNames.add("GreenI.jpeg");
-  for (int i = 1; i<=6; i++) {
+  for (int i = 1; i<=5; i++) {
     imageNames.add("IMG_957"+i+".JPEG");
   }
   size(500, 350);
-  img = new Image(processImage(imageNames.get(0)));
-  //Pixel toGet = img.get(144, 66);
-  //if (toGet != null) {
-  //  reqs = genReqs(toGet.c, 40);
-  //}
-  shapes = genShapes(img, 50);
-  //reqs.add(new Requirement("y is less than 100"));
-  //shapes.add(img.genShape(reqs));
-  //reqs.clear();
-  //img.addLowerImage(imageNames.get(1));
+  img = new Image(processImage(imageNames.get(index-1)));
+  shapes = genShapes(img, flex);
+  img.addLowerImage(imageNames.get(index));
   img.save();
 }
 
+int count = 0;
 void draw() {
   background(255);
   img.display();
@@ -30,6 +23,16 @@ void draw() {
   for (int i = 0; i<shapes.size(); i++) {
     shapes.get(i).move();
     shapes.get(i).display();
+  }
+  count++;
+  if (count >= 100) {
+    count = 0;
+    index++;
+    if (index >= 4) index = 0;
+    img = new Image(processScreen());
+    shapes = genShapes(img, flex);
+    img.addLowerImage(imageNames.get(index));
+    img.save();
   }
 }
 

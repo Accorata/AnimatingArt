@@ -52,26 +52,22 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
   for (int r = 0; r<=dim; r++) {
     for (int b = 0; b<=dim; b++) {
       for (int g = 0; g<=dim; g++) {
-        //println(r*flex + " " + b*flex + " " + g*flex);
         Color c = new Color(r*flex, b*flex, g*flex);
         check.put(c, false);
         possColors.add(c);
       }
     }
   }
-  //println(check);
   for (int i = 0; i<data.size(); i++) {
     Pixel pixel = data.get(i);
     Color c1 = roundCol(pixel.c, flex);
     Color c = possColors.get(((int)(c1.r/flex) + 1) * ((int)(c1.b/flex) + 1) * ((int)(c1.g/flex) + 1) - 1);
-    //println(red(pixel.c) + " " + green(pixel.c) + " " + blue(pixel.c) + " : " + c.r + " " + c.g + " " + c.b);
     Boolean doesExist = check.get(c);
     if (doesExist != null && !doesExist) {
       check.put(c, true);
       colors.add(new Color(pixel.c));
     }
   }
-  println(colors);
   return colors;
 }
 
