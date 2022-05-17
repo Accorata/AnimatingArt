@@ -59,10 +59,11 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
       }
     }
   }
-  println(check);
+  //println(check);
   for (int i = 0; i<data.size(); i++) {
     Pixel pixel = data.get(i);
-    Color c = roundCol(pixel.c, flex);
+    Color c1 = roundCol(pixel.c, flex);
+    Color c = possColors.get((int)((c1.r/dim + 1) * (c1.b/dim + 1) * (c1.g/dim + 1) - 1));
     //println(red(pixel.c) + " " + green(pixel.c) + " " + blue(pixel.c) + " : " + c.r + " " + c.g + " " + c.b);
     Boolean doesExist = check.get(c);
     if (doesExist != null && !doesExist){
