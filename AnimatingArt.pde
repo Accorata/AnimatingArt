@@ -15,7 +15,7 @@ void setup() {
   //if (toGet != null) {
   //  reqs = genReqs(toGet.c, 40);
   //}
-  ArrayList<Color> colors = findColors(img.data, 5);
+  ArrayList<Color> colors = findColors(img.data, 75);
   for (int i = 0; i<colors.size(); i++){
     color c = colors.get(i).c;
     reqs = genReqs(c, 30);
