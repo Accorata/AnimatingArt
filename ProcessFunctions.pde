@@ -22,7 +22,7 @@ ArrayList<Pixel> processScreen(PGraphics graphics) {
 ArrayList<Pixel> processImage(String imageName) {
   PGraphics imageSpace = createGraphics(width, height);
   imageSpace.beginDraw();
-  imageSpace.image(loadImage("Images/"+imageName), 0, 0, width, height);
+  imageSpace.image(loadImage("FinalImages/"+imageName), 0, 0, width, height);
   imageSpace.endDraw();
   return processScreen(imageSpace);
 }
@@ -103,4 +103,12 @@ void addShapes (ArrayList<Shape> shapes, Image img, float flex) {
     reqs = genReqs(c, flex);
     shapes.add(img.genShape(reqs));
   }
+}
+
+int chooseImg(int index){
+  int newIndex = (int)(random(imageNames.size()));
+  while (newIndex == index){
+    newIndex = (int)(random(imageNames.size()));
+  }
+  return newIndex;
 }

@@ -5,12 +5,14 @@ int index = 1;
 float flex = 75;
 
 void setup() {
-  for (int i = 1; i<=5; i++) {
-    imageNames.add("IMG_957"+i+".JPEG");
+  for (int i = 582; i<=609; i++) {
+    imageNames.add("IMG_9"+i+".heic");
   }
-  size(1000, 700);
-  img = new Image(processImage(imageNames.get(index-1)));
+  size(500, 350);
+  index = chooseImg(index);
+  img = new Image(processImage(imageNames.get(index)));
   addShapes(shapes, img, flex);
+  index = chooseImg(index);
   img.addLowerImage(imageNames.get(index));
   img.save();
 }
@@ -30,8 +32,9 @@ void draw() {
     count = 0;
     //img = new Image(processImage(imageNames.get(index)));
     //addShapes(shapes, img, flex);
-    index++;
-    if (index >= 4) index = 0;
+    //index++;
+    //if (index >= 4) index = 0;
+    index = chooseImg(index);
     img = new Image(processScreen());
     shapes = genShapes(img, flex);
     img.addLowerImage(imageNames.get(index));
