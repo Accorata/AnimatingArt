@@ -8,7 +8,7 @@ void setup() {
   for (int i = 1; i<=5; i++) {
     imageNames.add("IMG_957"+i+".JPEG");
   }
-  size(500, 350);
+  size(1000, 700);
   img = new Image(processImage(imageNames.get(index-1)));
   addShapes(shapes, img, flex);
   img.addLowerImage(imageNames.get(index));
@@ -24,7 +24,7 @@ void draw() {
     shapes.get(i).move();
     shapes.get(i).display();
   }
-  println(shapes.size());
+  println(shapes.size() + " " + frameRate);
   count++;
   if (count >= 100) {
     count = 0;

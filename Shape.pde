@@ -22,16 +22,19 @@ class Shape {
     shape.endDraw();
     randomDX = random(6)-3;
     randomDY = random(6)-3;
-    randomDZ = random(6)-3;
+    randomDZ = 1+(random(6)-3)/100;
   }
 
   void display() {
-    rect(x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale/2, height*scale/2);
-    //image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
+    //rect(x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale/2, height*scale/2);
+    image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
   }
 
   void move() {
-    move(randomDX, randomDY, randomDZ);
+    x += randomDX;
+    y += randomDY;
+    scale *= randomDZ;
+    //move(randomDX, randomDY, randomDZ);
   }
   void move(float dx, float dy) {
     x += dx;

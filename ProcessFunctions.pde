@@ -1,8 +1,9 @@
 ArrayList<Pixel> processScreen() {
   ArrayList<Pixel> data = new ArrayList<Pixel>();
+  //loadPixels();
   for (int i = 0; i<width; i++) {
     for (int j = 0; j<height; j++) {
-      data.add(new Pixel(i, j, color(get(i, j))));
+      data.add(new Pixel(i, j, color(get(i,j))));//pixels[i*height+j])));
     }
   }
   return data;
