@@ -24,6 +24,7 @@ void draw() {
     shapes.get(i).move();
     shapes.get(i).display();
   }
+  println(shapes.size());
   count++;
   if (count >= 100) {
     count = 0;
@@ -31,6 +32,7 @@ void draw() {
     //addShapes(shapes, img, flex);
     index++;
     if (index >= 4) index = 0;
+    img = new Image(processScreen());
     shapes = genShapes(img, flex);
     img.addLowerImage(imageNames.get(index));
     img.save();

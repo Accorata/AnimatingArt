@@ -26,7 +26,8 @@ class Shape {
   }
 
   void display() {
-    image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
+    rect(x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale/2, height*scale/2);
+    //image(shape, x-width*(scale-1)/2, y-height*(scale-1)/2, width*scale, height*scale);
   }
 
   void move() {
