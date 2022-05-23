@@ -22,7 +22,7 @@ class Shape {
     shape.endDraw();
     randomDX = random(6)-3;
     randomDY = random(6)-3;
-    randomDZ = 1+(random(6)-3)/100;
+    randomDZ = 1+(random(4)-3)/100;
   }
 
   void display() {

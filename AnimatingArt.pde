@@ -2,11 +2,11 @@ ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
 int index = 1;
-float flex = 75;
+float flex = 50;
 
 void setup() {
-  for (int i = 582; i<=609; i++) {
-    imageNames.add("IMG_9"+i+".heic");
+  for (int i = 582; i<=608; i++) {
+    if (i != 604) imageNames.add("IMG_9"+i+".jpeg");
   }
   size(500, 350);
   index = chooseImg(index);
