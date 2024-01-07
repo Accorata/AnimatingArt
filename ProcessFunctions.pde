@@ -66,7 +66,9 @@ ArrayList<Color> findColors (ArrayList<Pixel> data, float flex) {
     Boolean doesExist = check.get(c);
     if (doesExist != null && !doesExist) {
       check.put(c, true);
-      colors.add(new Color(pixel.c));
+      if (c.r + c.g + c.b < 600 ) {
+        colors.add(new Color(pixel.c));
+      }
     }
   }
   return colors;
