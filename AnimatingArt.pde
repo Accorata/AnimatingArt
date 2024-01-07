@@ -5,10 +5,17 @@ int index = 1;
 float flex = 50;
 
 void setup() {
-  for (int i = 582; i<=608; i++) {
-    if (i != 604) imageNames.add("IMG_9"+i+".jpeg");
-  }
-  size(500, 350);
+  //for (int i = 582; i<=608; i++) {
+  //  if (i != 604) imageNames.add("IMG_9"+i+".jpeg");
+  //}
+  imageNames.add("D2020_56_16x16.jpg");
+  imageNames.add("D2020_54_16x16.jpg");
+  imageNames.add("D2020_52_12x12.jpg");
+  imageNames.add("D2020_42_12x12.jpg");
+  imageNames.add("D2020_24_12x12.jpg");
+  imageNames.add("D2020_23_12x12.jpg");
+  
+  size(500, 500);
   index = chooseImg(index);
   img = new Image(processImage(imageNames.get(index)));
   addShapes(shapes, img, flex);
