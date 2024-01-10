@@ -2,7 +2,7 @@ ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
 int index = 1;
-float flex = 50;
+float flex = 20;
 
 void setup() {
   //for (int i = 582; i<=608; i++) {
@@ -14,6 +14,13 @@ void setup() {
   imageNames.add("D2020_42_12x12.jpg");
   imageNames.add("D2020_24_12x12.jpg");
   imageNames.add("D2020_23_12x12.jpg");
+  imageNames.add("D2020_36_12x12.jpg");
+  imageNames.add("D2020_34_12x12.jpg");
+  imageNames.add("D2020_39_12x12.jpg");
+  imageNames.add("D2020_19_12x12.jpg");
+  imageNames.add("D2020_17_12x12.jpg");
+  imageNames.add("D2020_15_12x12.jpg");
+  imageNames.add("D2020_12_12x12.jpg");
   
   size(500, 500);
   index = chooseImg(index);
@@ -26,7 +33,7 @@ void setup() {
 
 int count = 0;
 void draw() {
-  background(255);
+  //background(255);
   img.display();
   //shapes.get(0).move(0,-0.5,2);
   for (int i = 0; i<shapes.size(); i++) {
