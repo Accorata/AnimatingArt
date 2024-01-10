@@ -22,7 +22,7 @@ void setup() {
   imageNames.add("D2020_15_12x12.jpg");
   imageNames.add("D2020_12_12x12.jpg");
   
-  size(500, 500);
+  size(700, 700);
   index = chooseImg(index);
   img = new Image(processImage(imageNames.get(index)));
   addShapes(shapes, img, flex);
@@ -42,7 +42,7 @@ void draw() {
   }
   println(shapes.size() + " " + frameRate);
   count++;
-  if (count >= 100) {
+  if (count >= 50) { //100;
     count = 0;
     //img = new Image(processImage(imageNames.get(index)));
     //addShapes(shapes, img, flex);

@@ -20,9 +20,9 @@ class Shape {
       shape.point(pixel.x, pixel.y);
     }
     shape.endDraw();
-    randomDX = random(10)-5;
-    randomDY = random(10)-5;
-    randomDZ = 1+(random(4)-3)/100;
+    randomDX = 0; //random(10)-5;
+    randomDY = 0; //random(10)-5;
+    randomDZ = 1.2; //1+(random(4)-3)/100;
   }
 
   void display() {
