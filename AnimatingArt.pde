@@ -1,3 +1,4 @@
+// Decrease pop time
 ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
@@ -38,9 +39,12 @@ void draw() {
   //shapes.get(0).move(0,-0.5,2);
   for (int i = 0; i<shapes.size(); i++) {
     shapes.get(i).move();
-    shapes.get(i).display();
+    if (count < 30) {
+      shapes.get(i).display();
+    }
   }
-  println(shapes.size() + " " + frameRate);
+  //println(shapes.size() + " " + frameRate);
+  println(count);
   count++;
   if (count >= 50) { //100;
     count = 0;
