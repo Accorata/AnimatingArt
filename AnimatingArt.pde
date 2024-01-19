@@ -1,4 +1,3 @@
-// Decrease pop time
 ArrayList<String> imageNames = new ArrayList<String>();
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 Image img;
@@ -41,6 +40,11 @@ void draw() {
     shapes.get(i).move();
     if (count < 30) {
       shapes.get(i).display();
+    }
+    if (count == 4) {
+      shapes.get(i).randomDZ = 1/1.2;
+      shapes.get(i).randomDX = (random(10)-5)*3;
+      shapes.get(i).randomDY = (random(10)-5)*3;
     }
   }
   //println(shapes.size() + " " + frameRate);
