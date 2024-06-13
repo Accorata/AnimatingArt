@@ -27,12 +27,28 @@ void movePixels () {
 }
 
 int setImage (int index) {
-  int new_index = (int)(random(images.size()));
-  //while (new_index == index){
-  //  new_index = (int)(random(images.size()));
-  //}
-  image(images.get(new_index), 0, 0, width, height);
-  println(new_index);
+  int new_index = (int)(random(image_names.size()));
+  while (new_index == index){
+    new_index = (int)(random(image_names.size()));
+  }
+  current_image = loadImage(image_names.get(new_index));
+  //println(new_index);
+  // Make the pixels
+  for (int x = 0; x<width; x+=clarity) {
+    for (int y = 0; y<height; y+=clarity) {
+      screen.add(new Pixel(x, y, color(get(x, y))));
+    }
+  }
+  // Make the shapes
+  for (int i = 0; i<shape_number; i++) {
+    //vel_range = 0 //(shape_number-1)*3-i*3;
+    shapes.put(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range))));
+  }
+  // By color
+  for (Pixel pixel : screen) {
+    float brightness = brightness(pixel.c);
+    pixel.shape = int(brightness);
+  }
   return new_index;
 }
 
