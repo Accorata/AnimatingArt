@@ -25,3 +25,11 @@ void movePixels () {
     pixel.move();
   }
 }
+
+//color[] returnColors () {
+//  color[] colors = new color[5];
+//  for (int i = 0; i<=255; i+=255/5) {
+//    colors[i] = color(i);
+//  }
+//  return colors;
+//}
