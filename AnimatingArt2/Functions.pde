@@ -1,16 +1,13 @@
 void displayPixels () {
   loadPixels();
   for (Pixel pixel : screen) {
-    //stroke(pixel.c);
-    //point(pixel.x, pixel.y);
     int location = int(pixel.y * width + pixel.x);
-    //int total_size = width*height;  && location != total_size
     if (pixel.y >= 0 && pixel.y+1 < height && pixel.x >= 0 && pixel.x <= width) {
-      //println(pixel.x + " " + pixel.y);
-      pixels[location] = pixel.c;
+      // making white areas disappear
+      if (pixel.shape < 1) {
+        pixels[location] = pixel.c;
+      }
     }
-    //print(" " + pixel.x + " " + pixel.y);
-    //print(pixels[int(location)]);
   }
   updatePixels();
 }
@@ -32,16 +29,26 @@ int setImage (int index) {
     new_index = (int)(random(image_names.size()));
   }
   current_image = loadImage(image_names.get(new_index));
-  //println(new_index);
+  //Delete redundant pixels
+  //// Code below works, but is extremely slow
+  //for (int i = 0; i<screen.size(); i++) {
+  //  Pixel pixel = screen.get(i);
+  //  if (pixel.y >= 0 && pixel.y+1 < height && pixel.x >= 0 && pixel.x <= width) {
+  //    screen.remove(pixel);
+  //    i--;
+  //  }
+  //}
+  screen = new ArrayList<Pixel>();
   // Make the pixels
   for (int x = 0; x<width; x+=clarity) {
     for (int y = 0; y<height; y+=clarity) {
       screen.add(new Pixel(x, y, color(get(x, y))));
     }
   }
+  //println(screen.size());
   // Make the shapes
   for (int i = 0; i<shape_number; i++) {
-    //vel_range = 0 //(shape_number-1)*3-i*3;
+    //vel_range = (shape_number-1)*3-i*3;
     shapes.put(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range))));
   }
   // By color
