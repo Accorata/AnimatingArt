@@ -1,15 +1,15 @@
-let shape_number = 3
-let clarity = 1 //Maximum is at 1
-//let screen = []
-let shapes = new p5.TypedDict()
-let image_names = []
-let image_index = 0
-let time = 0
-let current_image
-let vel_range = 5 //8
-//function preload() {
-//  current_image = loadImage(
-//}
+var shape_number = 3
+var clarity = 1 //Maximum is at 1
+//var screen = []
+var shapes = new p5.TypedDict()
+var image_names = []
+var image_index = 0
+var time = 0
+var current_image, new_image
+var vel_range = 5 //8
+function preload() {
+  current_image = loadImage("FinalImages/IMG_7310.jpeg")
+}
 
 function setup() {
   createCanvas(700, 700)
@@ -21,12 +21,11 @@ function setup() {
   }
   image_index = int(random(image_names.length))
   background(1)
-  current_image = loadImage(image_names[image_index])
-  image(current_image, 0, 0)//, width, height)
-  print(image_names[image_index])
-  print(current_image)
+  new_image = loadImage(image_names[image_index], displayImage())
+  
+  //print(image_names[image_index])
+  //print(current_image)
 }
-
 
 function draw() {
 
