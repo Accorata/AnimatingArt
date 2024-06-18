@@ -46,7 +46,7 @@ class Image extends Shape {
   void addLowerImage(String imageName) {
     PGraphics imageSpace = createGraphics(width, height);
     imageSpace.beginDraw();
-    imageSpace.image(loadImage("FinalImages/"+imageName), 0, 0, width, height);
+    imageSpace.image(loadImage("AnimatingArt_p5/FinalImages/"+imageName), 0, 0, width, height);
     for (int i = 0; i<data.size(); i++) {
       Pixel pixel = data.get(i);
       imageSpace.stroke(pixel.c);

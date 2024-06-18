@@ -11,7 +11,7 @@ void setup() {
   size(700,700);
   colorMode(HSB, 360, 100, shape_number-1);
   for (int i = 7309; i<=7405; i++) { //407
-    image_names.add("../FinalImages/IMG_"+i+".jpeg");
+    image_names.add("../AnimatingArt_p5/FinalImages/IMG_"+i+".jpeg");
   }
   //String imageName = "D2020_12_12x12.jpg";
   //image(loadImage("../FinalImages/"+imageName), 0, 0, width, height);

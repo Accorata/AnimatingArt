@@ -22,7 +22,7 @@ ArrayList<Pixel> processScreen(PGraphics graphics) {
 ArrayList<Pixel> processImage(String imageName) {
   PGraphics imageSpace = createGraphics(width, height);
   imageSpace.beginDraw();
-  imageSpace.image(loadImage("FinalImages/"+imageName), 0, 0, width, height);
+  imageSpace.image(loadImage("AnimatingArt_p5/FinalImages/"+imageName), 0, 0, width, height);
   imageSpace.endDraw();
   return processScreen(imageSpace);
 }
