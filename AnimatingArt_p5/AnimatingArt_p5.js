@@ -19,31 +19,11 @@ function setup() {
   }
   image_index = int(random(image_names.length))
   loadImage(image_names[image_index], displayImage)
-  // Make the pixels
-  for (let x = 0; x<width; x+=clarity) {
-    for (let y = 0; y<height; y+=clarity) {
-      screen_data.push(new Pixel(x, y, color(get(x, y))));
-    }
-  }
-  print(screen_data)
-  // Make the shapes
-  for (let i = 0; i<shape_number; i++) {
-    //vel_range = (shape_number-1)*3-i*3;
-    shapes.create(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range))));
-  }
-  // By color
-  //print(screen_data)
-  //for (let pixel in screen_data) {
-  //  //print(pixel)
-  //  let pixel_brightness = brightness(screen_data[pixel].c)
-  //  //print(pixel_brightness)
-  //  screen_data[pixel].shape = int(pixel_brightness)
-  //}
 }
 
 function draw() {
   //for (let pixel in screen_data) {
   //  screen_data[pixel].move()
   //}
-  displayPixels()
+  //displayPixels()
 }
