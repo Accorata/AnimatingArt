@@ -14,6 +14,10 @@ class Pixel {
     this.x += direction.x
     this.y += direction.y
   }
+  
+  location() {
+    return int((this.y * width * pixelDensity() + this.x) * 4 * pixelDensity())
+  }
 }
 
 class Direction {

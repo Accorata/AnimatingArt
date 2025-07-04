@@ -1,62 +1,45 @@
 function displayImage(img) {
   image(img, 0, 0, width, height)
   // Make the pixels
-  for (let x = 0; x<width; x+=clarity) {
-    for (let y = 0; y<height; y+=clarity) {
-      screen_data.push(new Pixel(x, y, color(get(x, y))));
+  let reactive_clarity = clarity / pixelDensity()
+  for (let x = 0; x<width; x+=reactive_clarity) {
+    for (let y = 0; y<height; y+=reactive_clarity) {
+       let p = new Pixel(x, y, color(get(x, y)))
+       screen_data.push(p)
     }
   }
-  //print(screen_data)
+  //print(screen_data.length)
+  background(0)
   // Make the shapes
   for (let i = 0; i<shape_number; i++) {
     //vel_range = (shape_number-1)*3-i*3;
-    shapes.create(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range))));
+    shapes.create(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range)))) 
   }
-  // By color
+  // Assign pixels to shapes by color
   //print(screen_data)
-  //for (let pixel in screen_data) {
-  //  //print(pixel)
-  //  let pixel_brightness = brightness(screen_data[pixel].c)
-  //  //print(pixel_brightness)
-  //  screen_data[pixel].shape = int(pixel_brightness)
-  //}
+  for (let pixel in screen_data) {
+    let pixel_brightness = brightness(screen_data[pixel].c)
+    let pixel_shape = int(pixel_brightness / 101 * shape_number) // Adjust to the number of shapes possible
+    //print(pixel_shape)
+    screen_data[pixel].shape = pixel_shape
+  }
   displayPixels()
 }
 
 function displayPixels () {
   loadPixels()
   for (var pixel in screen_data) {
-    let x = screen_data[pixel].x
-    let y = screen_data[pixel].y
-    let location = int((y * width + x)*16)
-    if (y >= 0 && y+1 < height && x >= 0 && x <= width) {
-      // making white areas disappear
-      //if (pixel.shape < 1) {
-      for (let i = 0; i<4; i++) {
-        location += i*4
-        pixels[location] = red(pixel.c)
-        pixels[location+1] = green(pixel.c)
-        pixels[location+2] = blue(pixel.c)
-        pixels[location+3] = 255
-      }
-      //}
-    }
+    let location = screen_data[pixel].location()
+    pixels[location] = red(screen_data[pixel].c)
+    pixels[location+1] = green(screen_data[pixel].c)
+    pixels[location+2] = blue(screen_data[pixel].c)
+    pixels[location+3] = 255
   }
-  //print(height*width)
-  //let abc = ""
-  //for (let location = 0; location<height*width*16/2; location+=40) {
-  //  //if (y >= 0 && y+1 < height && x >= 0 && x <= width) {
-  //    // making white areas disappear
-  //    //if (pixel.shape < 1) {
-  //    pixels[location] = 0//pixel.c;
-  //    pixels[location+1] = 0
-  //    pixels[location+2] = 0
-  //    pixels[location+3] = 255
-  //    abc += location + " "
-  //    //}
-  //  //}
-  //}
-  ////print(abc)
-  //print(pixels.length)
   updatePixels()
+}
+
+//// Check if pixel should be added/displayed/moved, returns true if yes and false if no
+function colorRequirement (color_at_pixel) {
+  return brightness(color_at_pixel) <= 80
+  //return true
 }
