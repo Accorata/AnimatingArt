@@ -13,9 +13,14 @@ class Pixel {
     let direction = shapes.get(this.shape)
     this.x += direction.x
     this.y += direction.y
+    
   }
   
   location() {
+    // Return null if offscreen
+    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+      return null
+    }
     return int((this.y * width * pixelDensity() + this.x) * 4 * pixelDensity())
   }
 }

@@ -8,7 +8,6 @@ function displayImage(img) {
        screen_data.push(p)
     }
   }
-  //print(screen_data.length)
   background(0)
   // Make the shapes
   for (let i = 0; i<shape_number; i++) {
@@ -16,11 +15,9 @@ function displayImage(img) {
     shapes.create(i, new Direction(int(random(-vel_range,vel_range)),int(random(-vel_range,vel_range)))) 
   }
   // Assign pixels to shapes by color
-  //print(screen_data)
   for (let pixel in screen_data) {
     let pixel_brightness = brightness(screen_data[pixel].c)
     let pixel_shape = int(pixel_brightness / 101 * shape_number) // Adjust to the number of shapes possible
-    //print(pixel_shape)
     screen_data[pixel].shape = pixel_shape
   }
   displayPixels()
@@ -30,10 +27,12 @@ function displayPixels () {
   loadPixels()
   for (var pixel in screen_data) {
     let location = screen_data[pixel].location()
-    pixels[location] = red(screen_data[pixel].c)
-    pixels[location+1] = green(screen_data[pixel].c)
-    pixels[location+2] = blue(screen_data[pixel].c)
-    pixels[location+3] = 255
+    if (location != null) {
+      pixels[location] = red(screen_data[pixel].c)
+      pixels[location+1] = green(screen_data[pixel].c)
+      pixels[location+2] = blue(screen_data[pixel].c)
+      pixels[location+3] = 255
+    }
   }
   updatePixels()
 }
