@@ -8,7 +8,12 @@ function displayImage(img) {
        screen_data.push(p)
     }
   }
-  background(0)
+  //background(0)
+  //if (bkground != null){
+  //  image(bkground, 0, 0, width, height)
+  //} else {
+  //  background(0)
+  //}
   // Make the shapes
   for (let i = 0; i<shape_number; i++) {
     //vel_range = (shape_number-1)*3-i*3;
@@ -20,14 +25,14 @@ function displayImage(img) {
     let pixel_shape = int(pixel_brightness / 101 * shape_number) // Adjust to the number of shapes possible
     screen_data[pixel].shape = pixel_shape
   }
-  displayPixels()
+  //displayPixels()
 }
 
 function displayPixels () {
   loadPixels()
   for (var pixel in screen_data) {
     let location = screen_data[pixel].location()
-    if (location != null) {
+    if (location != null && colorRequirement(screen_data[pixel].c)) {
       pixels[location] = red(screen_data[pixel].c)
       pixels[location+1] = green(screen_data[pixel].c)
       pixels[location+2] = blue(screen_data[pixel].c)
@@ -41,4 +46,14 @@ function displayPixels () {
 function colorRequirement (color_at_pixel) {
   return brightness(color_at_pixel) <= 80
   //return true
+}
+
+function loadImages () {
+  for (let i = 0; i<image_names.length; i++) {
+    loadImage(image_names[i], appendImage)
+  }
+}
+
+function appendImage (img) {
+  images.push(img)
 }
