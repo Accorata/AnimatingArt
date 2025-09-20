@@ -8,7 +8,7 @@ var screen_data = []
 var shapes = new p5.TypedDict()
 var image_names = []
 var image_index = 0
-var time = 0 // Unused
+var time = 0
 var images = []
 
 var current_img
@@ -28,11 +28,10 @@ function preload () {
 function setup() {
   //willReadFrequently = true // Reminding myself about this - within canvas object (so probably assign the canvas to a var)
   canvas = createCanvas(windowWidth, windowHeight, P2D)
-  //canvas.drawingContext.getContextAttributes().willReadFrequently = true
+  //canvas = createCanvas(windowWidth, windowHeight).elt.getContext('2d', { willReadFrequently: true });
   
   background(1) //Test to make sure code runs if all else fails
   
-  //loadImage(image_names[image_index], displayImage)
   current_img = random(images)
   let img = random(images)
   displayImage(img)
@@ -48,12 +47,13 @@ function draw() {
   background(0)
   
   image(current_img, 0, 0, width, height)
+  filter(GRAY)
   displayPixels()
   
   time++
   if (time >= 60) {
     time = 0
-    screen_data = [] // would like to preserve these - so maybe just kill offscreen ones
+    screen_data = []
     displayImage(current_img)
     current_img = random(images)
   }
