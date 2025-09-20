@@ -44,8 +44,7 @@ function displayPixels () {
 
 //// Check if pixel should be added/displayed/moved, returns true if yes and false if no
 function colorRequirement (color_at_pixel) {
-  return brightness(color_at_pixel) <= 80
-  //return true
+  return brightness(color_at_pixel) <= 50
 }
 
 function loadImages () {

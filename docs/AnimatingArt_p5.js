@@ -27,7 +27,7 @@ function preload () {
 
 function setup() {
   //willReadFrequently = true // Reminding myself about this - within canvas object (so probably assign the canvas to a var)
-  canvas = createCanvas(400, 400, P2D)
+  canvas = createCanvas(windowWidth, windowHeight, P2D)
   //canvas.drawingContext.getContextAttributes().willReadFrequently = true
   
   background(1) //Test to make sure code runs if all else fails
@@ -41,11 +41,11 @@ function setup() {
 function draw() {
   for (let pixel in screen_data) {
     // Only move darker areas
-    //if (colorRequirement(screen_data[pixel].c)) {
+    if (colorRequirement(screen_data[pixel].c)) {
       screen_data[pixel].move()
-    //}
+    }
   }
-  //background(255)
+  background(0)
   
   image(current_img, 0, 0, width, height)
   displayPixels()
@@ -57,5 +57,4 @@ function draw() {
     displayImage(current_img)
     current_img = random(images)
   }
-  print(frameRate())
 }
