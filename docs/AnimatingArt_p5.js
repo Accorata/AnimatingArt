@@ -27,8 +27,8 @@ function preload () {
 
 function setup() {
   //willReadFrequently = true // Reminding myself about this - within canvas object (so probably assign the canvas to a var)
-  canvas = createCanvas(windowWidth, windowHeight, P2D)
-  //canvas = createCanvas(windowWidth, windowHeight).elt.getContext('2d', { willReadFrequently: true });
+  //canvas = createCanvas(windowWidth, windowHeight, P2D)
+  canvas = createCanvas(400, 400, P2D)
   
   background(1) //Test to make sure code runs if all else fails
   
@@ -40,9 +40,10 @@ function setup() {
 function draw() {
   for (let pixel in screen_data) {
     // Only move darker areas
-    if (colorRequirement(screen_data[pixel].c)) {
+    if (screen_data[pixel].c <= 50) { // colorRequirement(screen_data[pixel].c)) {
       screen_data[pixel].move()
     }
+    //screen_data[pixel].updateColor()
   }
   background(0)
   
@@ -51,7 +52,7 @@ function draw() {
   displayPixels()
   
   time++
-  if (time >= 60) {
+  if (time >= 90) {
     time = 0
     screen_data = []
     displayImage(current_img)
