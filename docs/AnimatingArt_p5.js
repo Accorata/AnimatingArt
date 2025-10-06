@@ -21,6 +21,9 @@ function preload () {
   for (let i = 5929; i<=5940; i++) {
     image_names.push("FinalImages/IMG_"+i+".JPG")
   }
+  for (let i = 4049; i<=4163; i++) {
+    image_names.push("FinalImages/IMG_"+i+".jpeg")
+  }
   
   // Disable when testing
   loadImages()
