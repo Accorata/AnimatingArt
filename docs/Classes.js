@@ -6,10 +6,12 @@ class Pixel {
   }
   
   move() {
-    let direction = shapes.get(this.shape)
-    this.x += direction.x
-    this.y += direction.y
-    this.updateColor()
+    if (shapes.hasKey(this.shape)) {
+      let direction = shapes.get(this.shape)
+      this.x += direction.x
+      this.y += direction.y
+      this.updateColor()
+    }
   }
   
   location() {

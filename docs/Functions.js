@@ -1,13 +1,18 @@
-function displayImage(img) {
-  image(img, 0, 0, width, height)
+function displayImages(img, img2) {
+  image(img, 0, 0, width/2, height)
+  image(img2, width/2, 0, width/2, height)
+  displayPixels ()
   filter(GRAY)
+  screen_data = []
   // Make the pixels
   let reactive_clarity = clarity / pixelDensity()
   for (let x = 0; x<width; x+=reactive_clarity) {
     for (let y = 0; y<height; y+=reactive_clarity) {
       let c = brightness(color(get(x,y)))
-      let p = new Pixel(x, y, c)
-      screen_data.push(p)
+      if (c <= 50) {
+        let p = new Pixel(x, y, c)
+        screen_data.push(p)
+      }
     }
   }
   // Make the shapes
@@ -16,22 +21,27 @@ function displayImage(img) {
   }
   // Assign pixels to shapes by color
   for (let pixel in screen_data) {
-    let pixel_shape = int(screen_data[pixel].c / 101 * shape_number) // Adjust to the number of shapes possible
-    screen_data[pixel].shape = pixel_shape
-    // Random color swapping tests
-    //shapes[pixel_shape].set_future_color(255-pixel_brightness)
+    if (screen_data[pixel] != null) {
+      let pixel_shape = int(screen_data[pixel].c / 101 * shape_number) // Adjust to the number of shapes possible
+      screen_data[pixel].shape = pixel_shape
+    }
   }
 }
 
 function displayPixels () {
   loadPixels()
   for (var pixel in screen_data) {
-    let location = screen_data[pixel].location()
-    if (location != null && screen_data[pixel].c <= 50 ) {
-      pixels[location] = screen_data[pixel].c
-      pixels[location+1] = screen_data[pixel].c
-      pixels[location+2] = screen_data[pixel].c
-      pixels[location+3] = 255
+    if (screen_data[pixel] != null) {
+      let location = screen_data[pixel].location()
+      // Only display darker areas
+      if (location != null && screen_data[pixel].c <= 50 ) {
+        pixels[location] = screen_data[pixel].c
+        pixels[location+1] = screen_data[pixel].c
+        pixels[location+2] = screen_data[pixel].c
+        pixels[location+3] = 255
+      } else {
+          screen_data[pixel] = null
+      }
     }
   }
   updatePixels()
