@@ -14,16 +14,29 @@ var images = []
 var current_img
 
 function preload () {
-  for (let i = 7309; i<=7405; i++) {
-    image_names.push("FinalImages/IMG_"+i+".jpeg")
-  }
-  image_names.push("FinalImages/IMG_7407.jpeg")
-  for (let i = 5929; i<=5940; i++) {
-    image_names.push("FinalImages/IMG_"+i+".JPG")
-  }
+  //for (let i = 7309; i<=7405; i++) {
+  //  image_names.push("FinalImages/IMG_"+i+".jpeg")
+  //}
+  //image_names.push("FinalImages/IMG_7407.jpeg")
+  //for (let i = 5929; i<=5940; i++) {
+  //  image_names.push("FinalImages/IMG_"+i+".JPG")
+  //}
+  //for (let i = 4049; i<=4163; i++) {
+  //  image_names.push("FinalImages/IMG_"+i+".jpeg")
+  //}
+  
   for (let i = 4049; i<=4163; i++) {
-    image_names.push("FinalImages/IMG_"+i+".jpeg")
+    image_names.push("GalleryImages/IMG_"+i+".jpeg")
   }
+  for (let i = 4200; i<=4246; i++) {
+    image_names.push("GalleryImages/IMG_"+i+".jpeg")
+  }
+  //for (let i = 4262; i<=4265; i++) {
+  //  image_names.push("GalleryImages/IMG_"+i+".jpeg")
+  //}
+  //for (let i = 7309; i<=7407; i++) {
+  //  image_names.push("GalleryImages/IMG_"+i+".jpeg")
+  //}
   
   // Disable when testing
   loadImages()
@@ -66,5 +79,5 @@ function draw() {
     current_img = random(images)
     current_img2 = random(images)
   }
-  print(frameRate())
+  //print(frameRate())
 }
