@@ -1,0 +1,1 @@
+Put any images you wish for the program to access in this folder. Remember to also include a new line of code as instructed.

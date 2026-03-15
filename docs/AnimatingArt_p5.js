@@ -14,29 +14,11 @@ var images = []
 var current_img
 
 function preload () {
-  //for (let i = 7309; i<=7405; i++) {
-  //  image_names.push("FinalImages/IMG_"+i+".jpeg")
-  //}
-  //image_names.push("FinalImages/IMG_7407.jpeg")
-  //for (let i = 5929; i<=5940; i++) {
-  //  image_names.push("FinalImages/IMG_"+i+".JPG")
-  //}
-  //for (let i = 4049; i<=4163; i++) {
-  //  image_names.push("FinalImages/IMG_"+i+".jpeg")
-  //}
+  // template: image_names.push("AllyImages/<IMAGE_FILE_NAME_WITH_EXTENSION>")
+  // example: image_names.push("AllyImages/IMG_748.jpeg")
+  // Add new images below:
   
-  for (let i = 4049; i<=4163; i++) {
-    image_names.push("GalleryImages/IMG_"+i+".jpeg")
-  }
-  for (let i = 4200; i<=4246; i++) {
-    image_names.push("GalleryImages/IMG_"+i+".jpeg")
-  }
-  //for (let i = 4262; i<=4265; i++) {
-  //  image_names.push("GalleryImages/IMG_"+i+".jpeg")
-  //}
-  //for (let i = 7309; i<=7407; i++) {
-  //  image_names.push("GalleryImages/IMG_"+i+".jpeg")
-  //}
+  
   
   // Disable when testing
   loadImages()
